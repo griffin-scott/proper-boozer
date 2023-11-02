@@ -17,14 +17,13 @@ const PubsList = () => {
 
     // useEffect set to only run on initial page load
     useEffect(() => {
-        console.log("useEffect ran");
         getData();
     }, []);
 
     return (
         <div className="PubsList">
             {pubs.map((pub) => (
-                <PubPreview pub={pub} />
+                <PubPreview key={pub.id} pub={pub} />
             ))}
 
             {/* <ul>
