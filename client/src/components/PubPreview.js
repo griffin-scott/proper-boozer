@@ -1,4 +1,16 @@
+import { useEffect } from "react";
+
 const PubPreview = (props) => {
+
+    const hyphenateString = (str) => {
+        return str.replaceAll(' ', '-')
+    }
+
+    useEffect(() => {
+
+    }, [])
+
+
     return (
         <div className="PubPreview">
             <div className="container col-8 px-4 py-5">

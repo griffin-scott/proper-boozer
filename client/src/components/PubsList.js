@@ -1,29 +1,17 @@
 import PubPreview from "./PubPreview";
 import { Link } from "react-router-dom";
 
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import context from '../context/context'
 
 const PubsList = () => {
-    // Initialize state variables
-    const [pubs, setPubs] = useState([]);
-
-    // make api call to 'get' data and store it into state variable
-    const getData = async () => {
-        const res = await fetch("http://localhost:8000/pubs");
-        const data = await res.json();
-        console.log(data[0]);
-        setPubs(data);
-    };
-
-    // useEffect set to only run on initial page load
-    useEffect(() => {
-        getData();
-    }, []);
-
+    const pubs = useContext(context)
     return (
         <div className="PubsList">
             {pubs.map((pub) => (
-                <PubPreview key={pub.id} pub={pub} />
+                <Link to={`/pubs/${pub.url}`}>
+                    <PubPreview key={pub.id} pub={pub} />
+                </Link>
             ))}
 
             {/* <ul>
